@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeState  with ChangeNotifier {
-  List<Color> themeColors=[
-    Colors.blue,
+   List<Color> themeColors=[
+    Colors.red,
     Colors.yellow,
     Colors.red,
     Colors.pink
   ];
-  ThemeState(this.themeKey);
+  ThemeState({this.themeKey});
+
+  Color backgroundColor=Colors.white;
+
+
 
   int themeKey=0;
-
   void changeThemeColor(int key) async{
    
     SharedPreferences prefs = await SharedPreferences.getInstance();
