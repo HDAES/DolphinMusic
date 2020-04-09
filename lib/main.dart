@@ -41,8 +41,10 @@ class MyApp extends StatelessWidget {
           onGenerateRoute: Application.router.generator,
           theme: ThemeData(
             primarySwatch: themeState.themeColors[themeState.themeKey],
+            iconTheme: IconThemeData(color:themeState.themeColors[themeState.themeKey])
           ),
           home: Scaffold(
+            resizeToAvoidBottomPadding: false,
             backgroundColor: themeState.backgroundColor,
             body: HomePage(),
           ),

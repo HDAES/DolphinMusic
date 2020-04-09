@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 import '../provider/theme.dart';
-import '../p.dart';
+
 
 
 
@@ -18,7 +18,6 @@ Widget phone(TextEditingController phoneController,) {
     controller: phoneController,
     style: TextStyle(color: ThemeState().themeColors[0]),
     keyboardType: TextInputType.number,
-    
     inputFormatters:phoneFormate,
     decoration: InputDecoration(
     ),

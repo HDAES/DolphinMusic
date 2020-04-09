@@ -6,9 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ThemeState  with ChangeNotifier {
    List<Color> themeColors=[
     Colors.red,
-    Colors.yellow,
-    Colors.red,
-    Colors.pink
+    Colors.blue,
+    Colors.purple,
   ];
   ThemeState({this.themeKey});
 
