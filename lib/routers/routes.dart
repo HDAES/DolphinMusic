@@ -5,6 +5,7 @@ import 'package:fluro/fluro.dart';
 class Routes {
   static String root = '/';
   static String loginPage = '/login'; // 登录页面
+  static String indexPage = '/index'; // 登录页面
  
   static void configRoutes(Router router){
     router.notFoundHandler = new Handler(
@@ -15,5 +16,6 @@ class Routes {
     );
     
     router.define(loginPage, handler: loginHandler);
+    router.define(indexPage, handler: indexHandler);
   }
 }

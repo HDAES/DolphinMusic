@@ -2,7 +2,6 @@ import 'package:dolphin_music/public/common.dart';
 import 'package:dolphin_music/routers/application.dart';
 import 'package:dolphin_music/utils/net_req.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/theme.dart';
@@ -163,7 +162,8 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
 
-  TextEditingController phoneController;
+  TextEditingController phoneController= TextEditingController();
+  TextEditingController passwordController= TextEditingController();
   @override
   Widget build(BuildContext context) {
     //print(Provider.of<ThemeState>(context, listen: false).themeKey);
@@ -197,7 +197,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   ),
                   Container(
                     child: TextField(
-                      controller: phoneController,
+                      controller: passwordController,
                       style: TextStyle(color: themeColor),
                       obscureText: true,//是否是密码
                       decoration:InputDecoration(
@@ -210,7 +210,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: (){NetReq.login(context)},
+                    onTap: (){login();},
                     child: Container(
                       alignment: Alignment.center,
                       margin: EdgeInsets.only(top:40),
@@ -230,6 +230,12 @@ class _LoginWidgetState extends State<LoginWidget> {
         );
       }
     );
+  }
+
+  void  login(){
+    Application.router.navigateTo(context, '/index');
+    // print(passwordController.text);
+    // NetReq.login(context,phoneController.text,passwordController.text);
   }
 }
 
