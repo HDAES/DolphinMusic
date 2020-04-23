@@ -21,8 +21,9 @@ class _FindBannerState extends State<FindBanner> {
       child: Swiper(
         itemBuilder: (BuildContext content, int index){
           return Container(
+            margin: EdgeInsets.only(left:10,right:10),
             decoration: BoxDecoration(
-              borderRadius:BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                 image: NetworkImage("${widget.banner.toJson()['banners'][index]['pic']}"),
                 fit: BoxFit.fitHeight,

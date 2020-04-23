@@ -1,6 +1,5 @@
 import 'package:dolphin_music/public/common.dart';
 import 'package:dolphin_music/routers/application.dart';
-import 'package:dolphin_music/utils/net_req.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

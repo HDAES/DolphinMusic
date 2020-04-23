@@ -5,6 +5,7 @@ import './routers/routes.dart';
 import './routers/application.dart';
 import './provider/theme.dart';
 import './pages/home_page.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -36,17 +37,20 @@ class MyApp extends StatelessWidget {
 
     return Consumer<ThemeState>(
       builder: (context, themeState, child){
-        return MaterialApp(
-          title: 'Flutter Demo',
-          onGenerateRoute: Application.router.generator,
-          theme: ThemeData(
-            primarySwatch: themeState.themeColors[themeState.themeKey],
-            iconTheme: IconThemeData(color:themeState.themeColors[themeState.themeKey])
-          ),
-          home: Scaffold(
-            resizeToAvoidBottomPadding: false,
-            backgroundColor: themeState.backgroundColor,
-            body: HomePage(),
+        return  BotToastInit(
+          child: MaterialApp(
+            title: 'Flutter Demo',
+            onGenerateRoute: Application.router.generator,
+            navigatorObservers: [BotToastNavigatorObserver()],
+            theme: ThemeData(
+              primarySwatch: themeState.themeColors[themeState.themeKey],
+              iconTheme: IconThemeData(color:themeState.themeColors[themeState.themeKey])
+            ),
+            home: Scaffold(
+              resizeToAvoidBottomPadding: false,
+              backgroundColor: themeState.backgroundColor,
+              body: HomePage(),
+            ),
           ),
         );
       },

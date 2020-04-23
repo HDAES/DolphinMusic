@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../model/recommended.dart';
+import '../../model/recommendmusic.dart';
 
-class FindRecommenderPlayList extends StatefulWidget {
-  final RecommendedModel recommended;
-  FindRecommenderPlayList({this.recommended});
+class FindRecommendMusic extends StatefulWidget {
+  final RecommendMusicModel recommendMusic;
+  FindRecommendMusic({this.recommendMusic});
   @override
-  _FindRecommenderPlayListState createState() => _FindRecommenderPlayListState();
+  _FindRecommendMusicState createState() => _FindRecommendMusicState();
 }
 
-class _FindRecommenderPlayListState extends State<FindRecommenderPlayList> {
-  @override
+class _FindRecommendMusicState extends State<FindRecommendMusic> {
+ @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top:20,left: 10,right: 10),
+      margin: EdgeInsets.only(top:10,left: 10,right: 10),
       alignment: Alignment.centerLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text('推荐歌单',style: TextStyle(fontWeight: FontWeight.bold),),
+          Text('推荐歌曲',style: TextStyle(fontWeight: FontWeight.bold),),
           Container(
             margin: EdgeInsets.only(top:10),
             height: ScreenUtil().setWidth(280),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext content, int index){
-                return _item(widget.recommended.toJson()['result'][index]);
+                return _item(widget.recommendMusic.toJson()['result'][index]);
               },
-              itemCount: widget.recommended.toJson()['result'].length,
+              itemCount: widget.recommendMusic.toJson()['result'].length,
             )
           )
         ],
@@ -55,34 +55,29 @@ Widget _item(item){
             ),
           ),
           Positioned(
-            bottom: 0,
-            height:ScreenUtil().setWidth(80),
+            bottom: ScreenUtil().setWidth(40),
+            height:ScreenUtil().setWidth(40),
             width: ScreenUtil().setWidth(220),
             child: Text(
-              item['name'],
-              style: TextStyle(fontSize: 11),
+              item['song']['artists'][0]['name'],
+              style: TextStyle(fontSize: 11,fontWeight: FontWeight.bold),
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               softWrap:true
             ),
           ),
           Positioned(
-            top:0,
-            right: 0,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Icon(Icons.play_circle_outline,color: Colors.white,size: 14),
-                Text(
-                  "${(item['playCount']%1000).toString()}万",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12
-                  ),
-                )
-              ],
-            )
-          )
+            bottom: 0,
+            height:ScreenUtil().setWidth(40),
+            width: ScreenUtil().setWidth(220),
+            child: Text(
+              item['name'],
+              style: TextStyle(fontSize: 11,color: Colors.black87),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              softWrap:true
+            ),
+          ),
         ],
       ),
     ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'index/index_header.dart';
 import './dynamic/dynamic_index.dart';
-import './find/find_index.dart';
+import './find/find_index_page.dart';
 import './me/me_index.dart';
 
 class IndexPage extends StatefulWidget {
