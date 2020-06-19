@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 
+ * @Author: Hades
+ * @Date: 2020-06-19 15:04:44
+ * @LastEditTime: 2020-06-19 15:40:10
+ */ 
+import 'package:dolphin_music/routers/application.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../provider/theme.dart';
@@ -21,7 +28,7 @@ class FindNav extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: nav.map((item){
               return GestureDetector(
-                onTap: (){},
+                onTap: (){ toPage(item,context);},
                 child: Container(
                   margin: EdgeInsets.only(top:15),
                   child: Column(
@@ -47,6 +54,14 @@ class FindNav extends StatelessWidget {
           ),
         );
       });
-    
   }
+
+  void toPage(Map item,context){
+    print(item);
+    switch(item['id']){
+      case 3 :
+        Application.router.navigateTo(context, '/rank');
+    }
+  }
+  
 }

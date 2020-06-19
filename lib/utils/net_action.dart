@@ -1,3 +1,9 @@
+/*
+ * @Descripttion: 
+ * @Author: Hades
+ * @Date: 2020-06-19 15:04:44
+ * @LastEditTime: 2020-06-19 15:59:32
+ */ 
 
 
 
@@ -5,7 +11,9 @@ import '../model/banner.dart';
 import '../model/recommended.dart';
 import '../model/recommendmusic.dart';
 import '../model/recommend_mv.dart';
+import '../model/rankList.dart';
 import './net.dart';
+import 'net.dart';
 
 
 
@@ -14,6 +22,7 @@ class ApiUrl {
   static String recommended = '/personalized?limit=5'; //获取推荐歌单
   static String recommendsong = '/personalized/newsong'; //获取推荐歌曲
   static String recommendmv = '/personalized/mv'; //获取推荐mv
+  static String rankList = '/toplist/detail';//所有榜单
 }
 
 class NetAction {
@@ -39,6 +48,11 @@ class NetAction {
   static  getrecommendMv() async {
     Map response=await MyNet.get(ApiUrl.recommendmv);
     return RecommendMvModel.fromJson(response);
+  }
+
+  static getRankList() async{
+    Map response = await MyNet.get(ApiUrl.rankList);
+    return RankListModel.fromJson(response);
   }
 }
 
